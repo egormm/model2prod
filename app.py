@@ -12,6 +12,11 @@ app = Flask(__name__)
 app.config['ALLOWED_API_TOKENS'] = os.getenv('API_TOKENS').split(',')
 
 
+@app.route('/ping')
+def ping():
+    return 'pong'
+
+
 @app.route('/')
 @check_api_token_header
 def index():
