@@ -13,6 +13,7 @@ app.config['ALLOWED_API_TOKENS'] = os.getenv('API_TOKENS').split(',')
 
 
 @app.route('/')
+@check_api_token_header
 def index():
     return send_from_directory('static', 'index.html')
 
