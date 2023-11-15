@@ -1,0 +1,13 @@
+[Unit]
+Description=Flask app running on Waitress
+After=network.target
+
+[Service]
+User=bremen
+Group=www-data
+WorkingDirectory=/home/bremen/projects/model2prod
+Environment="PATH=/home/bremen/projects/model2prod/venv/bin"
+ExecStart=/home/bremen/projects/model2prod/venv/bin/waitress-serve --port=12023 app:app
+
+[Install]
+WantedBy=multi-user.target
