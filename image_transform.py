@@ -26,7 +26,7 @@ def image_to_matrix(image_bytes: bytes, desired_height: int, desired_width: int)
         g_list.append(g_row)
         b_list.append(b_row)
 
-    return [r_list, g_list, b_list]
+    return [[r_list, g_list, b_list]]
 
 
 if __name__ == '__main__':

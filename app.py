@@ -1,19 +1,25 @@
+import logging
 import os
 
 from flask import request, Flask, jsonify, Response, send_from_directory
 
+import setup_logging
 from authentication import check_api_token_header
 from image_transform import image_to_matrix
 from model import predict
 import dotenv
 
+setup_logging.setup()
 dotenv.load_dotenv()
 app = Flask(__name__)
 app.config['ALLOWED_API_TOKENS'] = os.getenv('API_TOKENS').split(',')
 
+logger = logging.getLogger(__name__)
+
 
 @app.route('/ping')
 def ping():
+    logger.info('ping received')
     return 'pong'
 
 

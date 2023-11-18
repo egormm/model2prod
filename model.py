@@ -1,7 +1,10 @@
+import logging
+
 import torch
 
 from image_transform import image_to_matrix
 
+logger = logging.getLogger(__name__)
 # might be slow for the first time
 _model = torch.jit.load('model_example.pt')
 
@@ -12,6 +15,7 @@ _model.eval()
 def predict(
         images: list[list[list[list[float]]]],
 ) -> list[list[float]]:
+    logger.info(f'Predicting {len(images)} images')
     # convert features to tensor
     _features = torch.tensor(images)
 
